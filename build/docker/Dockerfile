@@ -10,9 +10,9 @@ COPY ./requirements.txt /src/requirements.txt
 RUN pip install -r requirements.txt
 
 # Expose the port the server runs on
-EXPOSE 5000
+EXPOSE 8000
 
 COPY . /src
 
 # Define a default command to start the server
-CMD ["python", "findings.py"]
+CMD ["python", "pastries.py"]

@@ -1,0 +1,50 @@
+swagger: '2.0'
+info:
+  version: '2.0.0'
+  title: API Pastry - 2.0
+  description: API definition of API Pastry sample app
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /pastries:
+    get:
+      description: Get list of pastries
+      summary: GetPastries
+      tags: [pastries]
+      operationId: app.get_pastries
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: Get list of pastries
+          schema:
+            type: object
+            properties:
+              pets:
+                type: array
+                items:
+                  $ref: '#/definitions/Pastry'
+definitions:
+  Pastry:
+    type: object
+    properties:
+      name:
+        description: Name of this pastry
+        type: string
+      description:
+        description: A short description of this pastry
+        type: string
+      size:
+        description: Size of pastry (S, M, L)
+        type: string
+      price:
+        description: Price (in USD) of this pastry
+        type: number
+        format: double
+      status:
+        description: Status in stock (available, out_of_stock)
+        type: string
