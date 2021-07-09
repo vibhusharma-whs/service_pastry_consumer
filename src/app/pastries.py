@@ -17,8 +17,6 @@ def finding():
 	response = urllib.request.urlopen('http://service_pastry/pastries').read()
 	# converting JSON data to a dictionary
 	list_of_data = json.loads(response)
-	print(list_of_data)
-	print(list_of_data)
 	data = {"pastries":list_of_data}
 	return render_template('index.html', data = data)
 	
