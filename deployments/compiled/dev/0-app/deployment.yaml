@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-pastry-consumer
+  namespace: service-pastry-consumer
+  labels:
+    app: service-pastry-consumer
+    subsystem: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-pastry-consumer
+      subsystem: app
+  template:
+    metadata:
+      labels:
+        app: service-pastry-consumer
+        subsystem: app
+    spec:
+      enableServiceLinks: false
+      containers:
+        - name: service-pastry-consumer
+          image: whitehatdev.azurecr.io/service-pastry-consumer
+          imagePullPolicy: Never
+          env:
+            - name: NODE_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+          resources:
+            limits:
+              cpu: 4
+              memory: 1Gi
+            requests:
+              cpu: 0
+              memory: 0Mi
